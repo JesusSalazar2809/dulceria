@@ -1,0 +1,98 @@
+<ul class="nav nav-pills nav-fill justify-content-center m-2" *ngIf="admin === false">
+  <li *ngFor="let categorie of categories" class="nav-item">
+    <a class="nav-link" routerLink="/home" routerLinkActive="{{categorie.active}}" >{{categorie.name}}</a>
+  </li>
+</ul>
+<div class="text-start p-2">
+  <span *ngIf="admin === true else inactive">
+    <p class="custom-control-label">Modo: Administrador</p>
+    <button (click)="changeRole()" class="btn btn-primary"> Cambiar a cliente </button>
+  </span>
+  <ng-template #inactive>
+    <p class="custom-control-label"> Modo: Cliente</p>
+    <button (click)="changeRole()" class="btn btn-danger mb-3"> Cambiar a administrador </button>
+    
+  </ng-template>
+</div>
+<ng-container *ngIf="admin; else client">
+  <div class="card p-2 m-3">
+    <app-admin></app-admin>
+  </div>
+</ng-container>
+
+<ng-template #client>
+  <div class="d-flex p-2">
+    <div id="carouselCandies" class="carousel slide w-25 m-auto p-2" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselCandies" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselCandies" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselCandies" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../../assets/images/agridulces.jpg" class="d-block w-100 hs-25" alt="agridulces">
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/dulces.jpg" class="d-block w-100" alt="dulces">
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/salados.jpg" class="d-block w-100" alt="salados">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselCandies" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselCandies" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <button class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#ShoppingCar">Ver su carrito</button>
+  </div>
+  <div class="card p-2 m-3">
+    <app-home [code]="codeToSearch" (addedEvent)="receiveCandies($event)"></app-home>
+  </div>
+  <div class="modal fade" id="ShoppingCar" tabindex="-1"aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Carrito de compras</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <div style="overflow-x:auto;">
+              <div class="table-responsive">
+                <table class="table table-head-custom table-vertical-center">
+                  <thead>
+                    <tr class="text-left">
+                      <th style="padding-left: 15px;">Nombre</th>
+                      <th>Precio</th>
+                      <th>Categoria</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let candy of candiesAdded">
+                        <td>
+                          {{candy.name}}
+                        </td>
+                        <td>{{candy.price}}</td>
+                        <td>{{candy.category}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+                <h5>Total: {{total}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+  

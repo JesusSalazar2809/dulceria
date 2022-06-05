@@ -1,0 +1,38 @@
+<div class="card p-2 m-3">
+  <h5>Agregar categoria</h5>
+  <form>
+    <div class="mb-3">
+      <label for="name_cat" class="form-label">Nombre: </label>
+      <input type="text" class="form-control" id="name_cat" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear categoria</button>
+  </form>
+</div>
+
+<div class="card p-2 m-3">
+  <h5 class="mt-3">Agregar dulce</h5>
+  <form>
+    <div class="mb-3">
+      <label for="name_prod" class="form-label">Nombre: </label>
+      <input type="text" class="form-control" id="name_prod" required>
+    </div>
+    <div class="mb-3">
+      <label for="categorie" class="form-label">Categoria: </label>
+      <select class="form-select" id="categorie" required>
+        <option selected>Seleccione una categoria</option>
+        <option *ngFor="let categorie of categories">
+          {{categorie.name}}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Precio: </label>
+      <input type="number" class="form-control" id="price" required>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Imagen: </label>
+      <input type="file" class="form-control" id="image" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar producto</button>
+  </form>
+</div>

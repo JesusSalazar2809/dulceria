@@ -1,0 +1,49 @@
+<div class="d-flex p-2">
+  <select class="form-select w-25 me-2">
+    <option selected>Order por costo</option>
+    <option value="-1">Mayor a menor</option>
+    <option value="1">Menor a mayor</option>
+  </select>
+  <input class="form-control w-25 me-2 " type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</div>
+<div class="card-body py-0">
+  <div class="table-responsive">
+    <div style="overflow-x:auto;">
+      <div class="table-responsive">
+        <table class="table table-head-custom table-vertical-center">
+          <thead>
+            <tr class="text-left">
+              <th style="padding-left: 15px;">Nombre</th>
+              <th>Precio</th>
+              <th>Categoria</th>
+              <th>Imagen</th>
+              <th>Añadir al carrito</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let candy of candies">
+                <td>
+                  {{candy.name}}
+                </td>
+                <td>{{candy.price}}</td>
+                <td>{{candy.category}}</td>
+                <td>{{candy.image}}</td>
+                <td class="pr-0 ">
+                  <span (click)="AddToShoppingCar(candy)" class="form-check form-switch text-center">
+                    <label>
+                      <input type="checkbox" class="form-check-input" role="switch" *ngIf="candy.added == true else inactive" checked="checked" name="select"/>
+                      <ng-template #inactive>
+                        <input type="checkbox" class="form-check-input" role="switch" name="select" />
+                      </ng-template>
+                      <span></span>
+                    </label>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

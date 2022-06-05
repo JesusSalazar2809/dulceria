@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dulceria2": {
+    "dulceria": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dulceria2",
+            "outputPath": "dist/dulceria",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,9 +31,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dulceria2:build:production"
+              "browserTarget": "dulceria:build:production"
             },
             "development": {
-              "browserTarget": "dulceria2:build:development"
+              "browserTarget": "dulceria:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dulceria2:build"
+            "browserTarget": "dulceria:build"
           }
         },
         "test": {
@@ -107,5 +112,5 @@
       }
     }
   },
-  "defaultProject": "dulceria2"
+  "defaultProject": "dulceria"
 }
