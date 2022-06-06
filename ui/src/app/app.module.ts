@@ -6,17 +6,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { BaseComponent } from './base/base.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component'
+import { AddCandyComponent } from './addCandy/addCandy.component';
+import { AddCategorieComponent } from './addCategorie/addCategorie.component';
+import { ListCandyComponent } from './listCandy/listCandy.component';
+import { ListCategorieComponent } from './listCategorie/listCategorie.component';
+import { EditCandyComponent } from './editCandy/editCandy.component';
+import { EditCategorieComponent } from './editCategorie/editCategorie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [		
+  declarations: [								
     AppComponent,
     BaseComponent,
     AdminComponent,
-    HomeComponent
-   ],
+    HomeComponent,
+    AddCandyComponent,
+    AddCategorieComponent,
+    ListCandyComponent,
+    ListCategorieComponent,
+    EditCandyComponent,
+    EditCategorieComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

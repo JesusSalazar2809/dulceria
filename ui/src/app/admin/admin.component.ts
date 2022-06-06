@@ -6,11 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  public categories = [
-    {name: "Salados", active: "inactive"},
-    {name: "Dulces", active: "inactive"},
-    {name: "Agridulces", active: "inactive"},
-  ]
+  
   constructor() { }
 
   ngOnInit() {
