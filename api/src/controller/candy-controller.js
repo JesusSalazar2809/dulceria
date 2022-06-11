@@ -1,9 +1,23 @@
 const candyModel = require ("../models/candy");
-
+const cloudinary =  require("cloudinary").v2;
 
 exports.createCandy = async (req, res) => {
     try {
-        await candyModel.create(req.body).catch(err =>{
+        const {body} = req;
+        console.log(req.file)
+        console.log("This is body => ",body)
+        console.log("This is body image",body.image)
+        cloudinary.uploader
+        .upload(body.image)
+        .then((result)=>{
+            if(!result.data.secure_url){
+                return res.status(500).json({error: "Algo salio mal al intentar subir la imagen"});
+            }
+            body.image = result.data.secure_url
+        });
+        console.log(body)
+        /* secure_url -> propiedad para guardar en la (db URL de cloudinary) */
+        await candyModel.create(body).catch(err =>{
             console.log(err.message)
             return res.status(400).json({error: "Algo salio mal al intentar crear el dulce"});
         })

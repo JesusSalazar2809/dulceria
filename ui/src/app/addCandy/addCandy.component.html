@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">Imagen: </label>
-      <input type="file" class="form-control" formControlName="image" required>
+      <input type="file" class="form-control" (change)="addImage($event)" accept="image/*" required>
     </div>
     <button type="submit" [disabled]="!candyForm.valid" class="btn btn-primary me-3">Agregar producto</button>
     <a class="btn btn-outline-danger" routerLink="/home" >Volver</a>

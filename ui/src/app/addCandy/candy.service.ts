@@ -1,14 +1,23 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+const user = localStorage.getItem('access_token');
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandyService {
   public apiUrl = environment.apiURL;
-  constructor(private _http: HttpClient) { }
-  addCandy() {
-    return this._http.post(`${this.apiUrl}/candy/create`, { headers: { 'content-Type': 'application/json' /*'Authorization': `Bearer ${this.user}`*/ } });
+  
+  constructor(
+    private _http: HttpClient,
+  ){ 
+  }
+
+  addCandy(candyObject:any): Observable<any>{
+    console.log("candyObject",JSON.stringify( candyObject ))
+    return this._http.post<any>(`/api/candy/create`, candyObject, { headers: { 'content-Type': 'application/json', 'Authorization': `Bearer ${user}` }});
   }
 }

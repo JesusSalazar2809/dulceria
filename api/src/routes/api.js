@@ -2,9 +2,10 @@ const { Router } = require('express');
 const router = Router();
 const candyController = require("../controller/candy-controller");
 const categorieController = require("../controller/categories-controller");
- 
+const multer = require('multer');
+const upload = multer({ dest: '../../../ui/src/assets/images'})
 //Rutas para dulces
-router.post('/candy/create', candyController.createCandy)
+router.post('/candy/create', upload.single('image'), candyController.createCandy)
 router.put('/candy/update/:id', candyController.updateCandy)
 router.get('/candy/getCandy', candyController.getCandy)
 router.get('/candy/getCandies', candyController.getCandies)

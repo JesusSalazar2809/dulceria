@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
-
 app.set('port', process.env.PORT || 3000);
 app.set('json spaces', 2);
 mongoose.connect(process.env.MONGODB_URL).then(() => {

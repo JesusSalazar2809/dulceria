@@ -13,6 +13,7 @@ import { ListCategorieComponent } from './listCategorie/listCategorie.component'
 import { EditCandyComponent } from './editCandy/editCandy.component';
 import { EditCategorieComponent } from './editCategorie/editCategorie.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [								
     AppComponent,
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
