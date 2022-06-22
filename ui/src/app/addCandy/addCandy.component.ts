@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { CandyService } from './candy.service';
 @Component({
@@ -8,25 +7,36 @@ import { CandyService } from './candy.service';
   styleUrls: ['./addCandy.component.scss']
 })
 export class AddCandyComponent implements OnInit {
-  public categories = [
-    {name: "Salados", active: "inactive"},
-    {name: "Dulces", active: "inactive"},
-    {name: "Agridulces", active: "inactive"},
-  ]
+  public categories:any = []
   public images:any = [];
-  candyForm = new FormGroup({
-    name_prod: new FormControl(''),
-    categorie: new FormControl(''),
-    price: new FormControl(0),
-  });
+  candyForm:any = {};
 
   constructor(private _candy: CandyService) { }
 
   ngOnInit() {
+    this.getCategories()
   }
+
+  getCategories(){
+    this._candy.getCategories().subscribe((res:any)=>{
+      this.categories = res;
+    })
+  }
+
   onSubmit() {
     const data:any = new FormData();
-    if(this.images.length < 0){ 
+    if(
+      !this.candyForm.name_prod || 
+      !this.candyForm.categorie || 
+      !this.candyForm.price){ 
+      Swal.fire(
+        'Error',
+        'Es necesario llenar todos los campos',
+        'error'
+      )
+      return false;
+    }
+    if(this.images.length <= 0){ 
       Swal.fire(
         'Error',
         'Es necesario subir una imagen',
@@ -35,20 +45,30 @@ export class AddCandyComponent implements OnInit {
       return false;
     }
     for(let key in this.candyForm) {
-      data.append(key, JSON.stringify( this.candyForm.get(key) ))
+      data.append(key, this.candyForm[key] )
     }
-   for(let file of this.images){
+    for(let file of this.images){
       data.append('image', file)
-   }
+    }
+    Swal.fire(
+      'Cargando...',
+      'Guardando dulce'
+    )
+    Swal.showLoading()
     this._candy.addCandy(data).subscribe((res:any)=>{
       Swal.fire(
         'Todo salio perfecto!',
-        res.data.success,
+        res.success,
         'success'
       )
+      window.location.reload();
     })
   }
 
+  OnChange(e:any){
+    this.candyForm [e.target.name] = e.target.value;
+    console.log(this.candyForm);
+  }
   addImage(e:any){
     const file = e.target.files[0];
     this.images.push(file);

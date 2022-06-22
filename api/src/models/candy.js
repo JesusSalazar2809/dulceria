@@ -7,12 +7,10 @@ const candySchema = new mongoose.Schema ({
         required: true
     },
 
-    categorie: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'categories'
-        }
-    ],
+    categorie:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'categories'
+    },
 
     price: {
         type: Number,

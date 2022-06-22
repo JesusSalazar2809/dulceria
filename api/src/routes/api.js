@@ -3,7 +3,7 @@ const router = Router();
 const candyController = require("../controller/candy-controller");
 const categorieController = require("../controller/categories-controller");
 const multer = require('multer');
-const upload = multer({ dest: '../../../ui/src/assets/images'})
+const upload = multer({ dest: 'public/images'})
 //Rutas para dulces
 router.post('/candy/create', upload.single('image'), candyController.createCandy)
 router.put('/candy/update/:id', candyController.updateCandy)
@@ -14,8 +14,8 @@ router.delete('/candy/delete', candyController.deleteCandy)
 //Rutas para categorias
 router.post('/categorie/create', categorieController.createCategorie)
 router.put('/categorie/update/:id', categorieController.updateCategorie)
-router.get('/categorie/getCategorie', categorieController.getCategorie)
+router.get('/categorie/getCategorie/:id', categorieController.getCategorie)
 router.get('/categorie/getCategories', categorieController.getCategories)
-router.delete('/categorie/delete', categorieController.deleteCategorie)
+router.delete('/categorie/delete/:id', categorieController.deleteCategorie)
 
 module.exports = router;
