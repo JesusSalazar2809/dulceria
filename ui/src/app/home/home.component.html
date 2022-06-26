@@ -24,11 +24,13 @@
             <tbody>
               <tr *ngFor="let candy of candies">
                 <td>
-                  {{candy.name}}
+                  {{candy.name_prod}}
                 </td>
                 <td>{{candy.price}}</td>
-                <td>{{candy.category}}</td>
-                <td>{{candy.image}}</td>
+                <td>{{candy.category.name_cat}}</td>
+                <td>
+                  <img src="{{candy.image}}" alt="{{candy.name_prod}}" style="width: 30%; border-radius:100%; ">
+                </td>
                 <td class="pr-0 ">
                   <span (click)="AddToShoppingCar(candy)" class="form-check form-switch text-center">
                     <label>
