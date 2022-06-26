@@ -10,12 +10,7 @@ const candySchema = new mongoose.Schema ({
     categorie:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'categories'
-<<<<<<< HEAD
-    }
-    ,
-=======
     },
->>>>>>> f58e6c7735a8d33f5043b7fc3bb1b7255023f0c7
 
     price: {
         type: Number,
