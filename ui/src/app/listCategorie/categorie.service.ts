@@ -1,19 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 const user = localStorage.getItem('access_token');
-
 @Injectable({
   providedIn: 'root'
 })
-export class CandyService {
-  
-  constructor( private _http: HttpClient ){}
+export class CategorieService {
 
-  addCandy(candyObject:any){
-    return this._http.post(`/api/candy/create`, candyObject, { headers: {'Authorization': `Bearer ${user}`}});
-  }
+constructor( private _http: HttpClient ) { }
   getCategories(){
     return this._http.get(`/api/categorie/getCategories`, { headers: {'Authorization': `Bearer ${user}`}});
+  }
+  deleteCategories(id:any){
+    return this._http.delete(`/api/categorie/delete/${id}`, { headers: {'Authorization': `Bearer ${user}`}});
   }
 }

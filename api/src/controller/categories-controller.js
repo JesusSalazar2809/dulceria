@@ -1,4 +1,6 @@
+const candyModel = require ("../models/candy");
 const categorieModel = require ("../models/categories");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 
 exports.createCategorie = async (req, res) => {
@@ -59,6 +61,10 @@ exports.deleteCategorie = async (req, res) => {
     try {
         if(!req.params.id || !ObjectId.isValid(req.params.id)){
             return res.status(400).json({error:"ID invalido o inexistente"})
+        }
+        const candies = await candyModel.find({categorie: req.params.id});
+        if(candies.length > 0){
+            return res.status(400).json({error: "La categoria tiene dulces ligados a ella, por lo tanto no se puede eliminar. Intente eliminando todos los dulces ligados a esta categoria"});
         }
         await categorieModel.findOneAndRemove({_id:req.params.id}).catch(err =>{
             console.log(err.message)
