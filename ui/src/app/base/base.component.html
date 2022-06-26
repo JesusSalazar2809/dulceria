@@ -1,9 +1,10 @@
-<ul class="nav nav-pills nav-fill justify-content-center m-2" *ngIf="admin === false">
+<ul class="nav nav-pills nav-fill fixed-top justify-content-center m-2 bg-white" *ngIf="admin === false">
   <li *ngFor="let categorie of categories" class="nav-item">
     <a class="nav-link" routerLink="/home" routerLinkActive="{{categorie.active}}" >{{categorie.name}}</a>
   </li>
 </ul>
-<div class="text-start p-2">
+
+<div class="text-start mt-5 pt-4 pl-2">
   <span *ngIf="admin === true else inactive">
     <p class="custom-control-label">Modo: Administrador</p>
     <button (click)="changeRole()" class="btn btn-primary"> Cambiar a cliente </button>
@@ -40,11 +41,6 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#ShoppingCar">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-    </svg>
-  </button>
   <div class="card p-2 m-3">
     <div class="text-end">
       <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#ShoppingCar">

@@ -27,20 +27,18 @@
                   {{candy.name_prod}}
                 </td>
                 <td>{{candy.price}}</td>
-                <td>{{candy.category.name_cat}}</td>
+                <td>{{candy.categorie.name_cat}}</td>
                 <td>
-                  <img src="{{candy.image}}" alt="{{candy.name_prod}}" style="width: 30%; border-radius:100%; ">
+                  <div class="text-center">
+                    <img style="height: 150px; width: 150px;" src="{{candy.image}}"/>
+                  </div>
                 </td>
                 <td class="pr-0 ">
-                  <span (click)="AddToShoppingCar(candy)" class="form-check form-switch text-center">
-                    <label>
-                      <input type="checkbox" class="form-check-input" role="switch" *ngIf="candy.added == true else inactive" checked="checked" name="select"/>
-                      <ng-template #inactive>
-                        <input type="checkbox" class="form-check-input" role="switch" name="select" />
-                      </ng-template>
-                      <span></span>
-                    </label>
-                  </span>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button class="btn btn-primary me-md-2" type="button">-1</button>
+                    <input type="number" class="form-control" style="width: 80px;" name="quantity" value="{{candy.quantity}}">
+                    <button class="btn btn-primary" type="button">+1</button>
+                  </div>
                 </td>
               </tr>
             </tbody>

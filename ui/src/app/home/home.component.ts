@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   getCandies = () =>{
     this._home.getCandies().subscribe((res:any)=>{
-      //console.log(res)
+      console.log(res)
       this.candies = res
     })
   }
