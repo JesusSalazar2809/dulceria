@@ -16,7 +16,10 @@ export class HomeService {
   ){ 
   }
 
-  getCandies(): Observable<any>{
-    return this._http.get<any>(`/api/candy/getCandies`, { headers: { 'content-Type': 'application/json', 'Authorization': `Bearer ${user}` }});
+  getCandies(query:any): Observable<any>{
+    return this._http.post<any>(`/api/candy/getCandies`, query, { headers: { 'content-Type': 'application/json', 'Authorization': `Bearer ${user}` }});
+  }
+  getCategories(){
+    return this._http.get(`/api/categorie/getCategories`, { headers: {'Authorization': `Bearer ${user}`}});
   }
 }

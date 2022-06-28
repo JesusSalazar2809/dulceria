@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCandyComponent } from './addCandy/addCandy.component';
 import { AddCategorieComponent } from './addCategorie/addCategorie.component';
-import { BaseComponent }  from './base/base.component';
 import { EditCandyComponent } from './editCandy/editCandy.component';
 import { EditCategorieComponent } from './editCategorie/editCategorie.component';
 import { HomeComponent }  from './home/home.component';
@@ -16,18 +15,7 @@ const routes: Routes = [
   {path:'listcategories', component: ListCategorieComponent},
   {path:'edit/candy/:id', component: EditCandyComponent},
   {path:'edit/categorie/:id', component: EditCategorieComponent},
-  { 
-    path: '', 
-    component: BaseComponent,
-    children:[
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {path: '', redirectTo: 'home', pathMatch: 'full'},
-      {path: '**', redirectTo: 'home', pathMatch: 'full'},
-    ]
-  },
+  {path: '', component: HomeComponent},
 ];
 
 @NgModule({

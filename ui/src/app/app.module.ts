@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BaseComponent } from './base/base.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component'
 import { AddCandyComponent } from './addCandy/addCandy.component';
@@ -15,9 +14,8 @@ import { EditCategorieComponent } from './editCategorie/editCategorie.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [								
+  declarations: [									
     AppComponent,
-    BaseComponent,
     AdminComponent,
     HomeComponent,
     AddCandyComponent,
@@ -25,8 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListCandyComponent,
     ListCategorieComponent,
     EditCandyComponent,
-    EditCategorieComponent
-  ],
+    EditCategorieComponent,
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,

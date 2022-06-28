@@ -40,7 +40,7 @@ export class ListCategorieComponent implements OnInit {
             Swal.fire('Error', res.error, 'error')
           }
           Swal.fire('Se elimino la categoria satisfactoriamente!', '', 'success')
-          this._cd.detectChanges();
+          this.getCategories();
         })
       }
     })

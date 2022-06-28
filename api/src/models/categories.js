@@ -6,7 +6,11 @@ const categorieSchema = new mongoose.Schema ({
         type: String,
         required: true
     },
-
+    code: {
+        type: String,
+        required: true,
+        default:null
+    },
     created_at: {
         type: String,
         default: Math.floor(Date.now())

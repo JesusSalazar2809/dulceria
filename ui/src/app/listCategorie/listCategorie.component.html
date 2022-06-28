@@ -5,6 +5,7 @@
       <thead>
         <tr class="text-left">
           <th style="padding-left: 15px;">Nombre</th>
+          <th>Code</th>
           <th>Opciones</th>
         </tr>
         </thead>
@@ -12,6 +13,9 @@
           <tr *ngFor="let categorie of categories">
             <td>
               {{categorie.name_cat}}
+            </td>
+            <td>
+              {{categorie.code | uppercase}}
             </td>
             <td>
               <div class="d-flex ">
@@ -22,6 +26,6 @@
           </tr>
         </tbody>
       </table>
-    <a class="btn btn-outline-danger" routerLink="/home" >Volver</a>
+    <a class="btn btn-outline-danger" routerLink="/" >Volver</a>
   </div>
 </div>

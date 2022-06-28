@@ -8,7 +8,7 @@ const upload = multer({ dest: 'public/images'})
 router.post('/candy/create', upload.single('image'), candyController.createCandy)
 router.put('/candy/update/:id', candyController.updateCandy)
 router.get('/candy/getCandy', candyController.getCandy)
-router.get('/candy/getCandies', candyController.getCandies)
+router.post('/candy/getCandies', candyController.getCandies)
 router.delete('/candy/delete', candyController.deleteCandy)
 
 //Rutas para categorias

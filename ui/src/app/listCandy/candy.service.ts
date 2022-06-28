@@ -10,6 +10,6 @@ export class CandyService {
   
   constructor( private _http: HttpClient ){}
   getCandies(){
-    return this._http.get(`/api/candy/getCandies`, { headers: {'Authorization': `Bearer ${user}`}});
+    return this._http.post(`/api/candy/getCandies`, { headers: {'Authorization': `Bearer ${user}`}});
   }
 }

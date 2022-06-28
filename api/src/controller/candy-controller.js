@@ -47,7 +47,15 @@ exports.getCandy = async (req, res) => {
 
 exports.getCandies = async (req, res) => {
     try {
-        const dulces = await candyModel.find().populate({
+        const {categorie, orderby, textSearch } = req.body;
+        const query = {};
+        if(categorie && categorie != ""){
+            query['categorie'] = categorie;
+        }
+        if(textSearch && textSearch != ""){
+            query['name_prod'] = new RegExp('^' + textSearch + '.*$', 'gi')
+        }
+        const dulces = await candyModel.find(query).sort({price:orderby}).populate({
             path: 'categorie',
             select:'name_cat'
         });

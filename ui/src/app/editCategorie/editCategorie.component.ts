@@ -42,6 +42,7 @@ export class EditCategorieComponent implements OnInit {
         res.success,
         'success'
       )
+      window.location.href='/listcategories'
     })
   }
 
