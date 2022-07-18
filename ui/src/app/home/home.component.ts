@@ -21,12 +21,14 @@ export class HomeComponent implements OnInit {
     textSearch: '',
     categorie:''
   }
+  public user:any = {logged:false};
 
   constructor(private _home: HomeService, private _cd: ChangeDetectorRef,) { }
 
   ngOnInit() {
     this.getCandies();
     this.getCategories();
+    this.getUser();
   }
 
   orderby(e:any){
@@ -36,6 +38,15 @@ export class HomeComponent implements OnInit {
   }
   OnChangeText(e:any){
     this.query.textSearch = e.target.value;
+  }
+
+  getUser(){
+    this._home.getUser().subscribe((res:any)=>{
+      console.log("Respuesta del usuario",res)
+      if(res.data){
+        this.user = res.data;
+      }
+    })
   }
 
   changeCategorie(categorie:string){

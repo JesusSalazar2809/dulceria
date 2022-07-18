@@ -22,4 +22,7 @@ export class HomeService {
   getCategories(){
     return this._http.get(`/api/categorie/getCategories`, { headers: {'Authorization': `Bearer ${user}`}});
   }
+  getUser(){
+    return this._http.get(`/api/customer/validate`, { headers: {'Authorization': `Bearer ${user}`}});
+  }
 }

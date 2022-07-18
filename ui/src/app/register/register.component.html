@@ -7,27 +7,27 @@
 		<form class="form" autocomplete="off">
 			<div class="mb-3">
 				<label>Nombre completo:</label>
-				<input type="text" class="form-control" placeholder="Nombre completo" name="fullname" />
+				<input type="text" class="form-control" placeholder="Nombre completo" name="full_name" (keyup)="onChange($event)" required/>
 			</div>
 			<div class="mb-3">
 				<label>Correo:</label>
-				<input type="email" class="form-control" placeholder="Correo Electronico" name="email" autocomplete="off" />
+				<input type="email" class="form-control" placeholder="Correo Electronico" name="email" autocomplete="off" (keyup)="onChange($event)" required/>
 			</div>
 			<div class="mb-3">
 				<label>Nombre de usuario:</label>
-				<input  type="text" class="form-control" placeholder="Nombre de usuario" name="username" />
+				<input  type="text" class="form-control" placeholder="Nombre de usuario" name="username" (keyup)="onChange($event)" required/>
 			</div>
 			<div class="mb-3">
 				<label>Contraseña:</label>
-				<input  type="password" class="form-control" placeholder="Contraseña" name="password" autocomplete="off" />
+				<input  type="password" class="form-control" placeholder="Contraseña" name="password" autocomplete="off" (keyup)="onChange($event)" required/>
 			</div>
 			<div class="mb-3">
 				<label>Confirmar Contraseña:</label>
-				<input  type="password" class="form-control" placeholder="Confirma tu contraseña" name="confirmPassword" autocomplete="off" />
+				<input  type="password" class="form-control" placeholder="Confirma tu contraseña" name="confirmPassword" autocomplete="off" (keyup)="onChange($event)" required/>
 			</div>
-			<div class="mb-3 d-flex flex-wrap flex-center">
-				<button (click)="submit()" id="kt_login_signup_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4" >Registrarte!</button>
-				<a href="/login" class="btn btn-danger font-weight-bold px-9 py-4 my-3 mx-4">Cancelar</a>
+			<div class="mb-3 d-flex flex-wrap flex-center text-center">
+				<button (click)="submit()" class="btn btn-primary m-1" >Registrarte!</button>
+				<a href="/login" class="btn btn-danger m-1">Cancelar</a>
 			</div>
 		</form>
 	</div>

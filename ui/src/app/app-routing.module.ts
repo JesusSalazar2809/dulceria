@@ -10,6 +10,7 @@ import { ListCandyComponent } from './listCandy/listCandy.component';
 import { ListCategorieComponent } from './listCategorie/listCategorie.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},

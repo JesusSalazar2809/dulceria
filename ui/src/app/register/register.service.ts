@@ -5,7 +5,10 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
   })
 export class RegisterService {
+  constructor(private _http: HttpClient) { }
 
-constructor(private _http: HttpClient) { }
+  singup(data:any){
+    return this._http.post('/api/customer/create',data);
+  }
 
 }
